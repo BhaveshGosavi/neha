@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ⭐</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+  radial-gradient(
+    ellipse at 20% 50%,
+    #1a0a2e 0%,
+    #0a0a1a 60%,
+    #0d0520 100%
+  );
+
+  min-height:100vh;
+  overflow-x:hidden;
+
+  font-family:'Lato',sans-serif;
+  color:#f0e6ff;
+}
+
+/* Stars */
+
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:white;
+
+  animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+
+  0%{
+    opacity:.2;
+    transform:scale(1);
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1.8);
+  }
+}
+
+/* Floating Particles */
+
+.particle{
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+
+  0%{
+    transform:translateY(100vh) rotate(0deg);
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-10vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* Hero */
+
+.hero{
+  position:relative;
+  z-index:1;
+
+  text-align:center;
+
+  padding:80px 20px 30px;
+}
+
+.hero .tag{
+  font-size:12px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+
+  color:#c084fc;
+
+  margin-bottom:18px;
+
+  animation:fadeDown 1s ease both;
+}
+
+.moon-emoji{
+  display:block;
+
+  font-size:70px;
+
+  margin:0 auto 16px;
+
+  animation:
+  floatAnim 4s ease-in-out infinite,
+  fadeDown 1s .3s ease both;
+
+  opacity:0;
+}
+
+@keyframes floatAnim{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-14px);
+  }
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+
+  font-size:clamp(38px,8vw,86px);
+
+  color:#f5c842;
+
+  line-height:1.1;
+
+  text-shadow:
+  0 0 40px rgba(245,200,66,.5),
+  0 0 80px rgba(245,200,66,.2);
+
+  animation:fadeDown 1s .5s ease both;
+
+  opacity:0;
+}
+
+.hero .name{
+  margin-top:10px;
+
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+
+  font-size:clamp(22px,4vw,40px);
+
+  color:#ffe49a;
+
+  animation:fadeDown 1s .7s ease both;
+
+  opacity:0;
+}
+
+@keyframes fadeDown{
+
+  from{
+    opacity:0;
+    transform:translateY(-28px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(36px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* Letter */
+
+.letter-section{
+  position:relative;
+  z-index:1;
+
+  max-width:740px;
+
+  margin:0 auto;
+
+  padding:10px 24px 50px;
+}
+
+.letter-card{
+  background:rgba(255,255,255,.04);
+
+  border:1px solid rgba(192,132,252,.25);
+
+  border-radius:22px;
+
+  padding:40px;
+
+  backdrop-filter:blur(12px);
+
+  animation:fadeUp 1s .9s ease both;
+
+  opacity:0;
+}
+
+.letter-card p{
+  font-size:16.5px;
+
+  line-height:2;
+
+  color:#e2d4ff;
+
+  margin-bottom:18px;
+}
+
+.quote{
+  font-family:'Playfair Display',serif;
+
+  font-style:italic;
+
+  font-size:19px;
+
+  color:#ffe49a;
+
+  text-align:center;
+
+  border-left:3px solid #f5c842;
+
+  padding-left:18px;
+
+  margin:26px 0;
+}
+
+/* Photos */
+
+.photo-section{
+  position:relative;
+  z-index:1;
+
+  max-width:1000px;
+
+  margin:auto;
+
+  padding:20px 24px 70px;
+}
+
+.photo-section h2{
+  text-align:center;
+
+  margin-bottom:35px;
+
+  color:#f5c842;
+
+  font-size:32px;
+
+  font-family:'Playfair Display',serif;
+
+  animation:fadeUp 1s 1s ease both;
+
+  opacity:0;
+}
+
+.photo-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:20px;
+}
+
+.photo-item{
+  overflow:hidden;
+
+  border-radius:18px;
+
+  border:2px solid rgba(245,200,66,.25);
+
+  transition:.4s;
+
+  animation:fadeUp 1s ease both;
+}
+
+.photo-item:hover{
+  transform:translateY(-6px) scale(1.03);
+
+  border-color:#f5c842;
+
+  box-shadow:
+  0 10px 30px rgba(245,200,66,.2);
+}
+
+.photo-item img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  aspect-ratio:1/1;
+}
+
+/* Footer */
+
+.footer{
+  position:relative;
+  z-index:1;
+
+  text-align:center;
+
+  padding:20px 20px 60px;
+}
+
+.footer .heart{
+  font-size:32px;
+
+  animation:heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.25);
+  }
+}
+
+.footer p{
+  margin-top:12px;
+
+  font-size:14px;
+
+  letter-spacing:2px;
+
+  color:#9d7fd4;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Stars -->
+<div id="stars"></div>
+
+<!-- Hero -->
+
+<div class="hero">
+
+  <div class="tag">
+    ✦ A Special Day For A Special Soul ✦
+  </div>
+
+  <span class="moon-emoji">🌙</span>
+
+  <h1>Happy Birthday</h1>
+
+  <div class="name">
+    To My Dearest Friend ✨
+  </div>
+
+</div>
+
+<!-- Letter -->
+
+<div class="letter-section">
+
+  <div class="letter-card">
+
+    <p>
+      There are some people who walk into your life
+      and quietly become your whole world —
+      without even trying.
+      You are that person for me.
+    </p>
+
+    <div class="quote">
+      "You make the ordinary moments
+      feel like magic just by being in them."
+    </div>
+
+    <p>
+      Five days of silence from you,
+      and the world genuinely feels a little dimmer.
+      No call, no message —
+      and yet you're all I think about.
+      That's how deeply you matter.
+    </p>
+
+    <p>
+      On your birthday,
+      I don't just want to wish you well —
+      I want to remind you that
+      there's someone who notices when you're gone,
+      who misses your laugh,
+      your voice,
+      your presence...
+      more than words can hold.
+    </p>
+
+    <div class="quote">
+      "You are the kind of person
+      poems are written about —
+      and I'm still searching
+      for the right words."
+    </div>
+
+    <p>
+      Happy Birthday.
+      I hope this year brings you
+      every beautiful thing you deserve —
+      and I hope,
+      somewhere in it,
+      there's still room for me. 🌙
+    </p>
+
+  </div>
+
+</div>
+
+<!-- Photos -->
+
+<div class="photo-section">
+
+  <h2>📸 Our Memories Together</h2>
+
+  <div class="photo-grid">
+
+    <!-- Photo 1 -->
+    <div class="photo-item">
+      <img src="1000056236.jpg" alt="">
+    </div>
+
+    <!-- Photo 2 -->
+    <div class="photo-item">
+      <img src="1000056240.jpg" alt="">
+    </div>
+
+    <!-- Photo 3 -->
+    <div class="photo-item">
+      <img src="1000056259.jpg" alt="">
+    </div>
+
+    <!-- Photo 4 -->
+    <div class="photo-item">
+      <img src="1000056268.jpg" alt="">
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Footer -->
+
+<div class="footer">
+
+  <div class="heart">💛</div>
+
+  <p>
+    Made with every bit of love I have —
+    just for you.
+  </p>
+
+</div>
+
+<!-- JS -->
+
+<script>
+
+/* Stars */
+
+const starsEl = document.getElementById('stars');
+
+for(let i=0;i<160;i++){
+
+  const s = document.createElement('div');
+
+  s.className='star';
+
+  s.style.left=Math.random()*100+'%';
+  s.style.top=Math.random()*100+'%';
+
+  s.style.animationDelay=Math.random()*5+'s';
+
+  s.style.animationDuration=
+  (2+Math.random()*4)+'s';
+
+  s.style.width=
+  s.style.height=
+  (Math.random()*2.5+0.5)+'px';
+
+  starsEl.appendChild(s);
+}
+
+/* Floating particles */
+
+const colors=[
+  '#f5c842',
+  '#c084fc',
+  '#ff7eb3',
+  '#7ee8fa'
+];
+
+for(let i=0;i<18;i++){
+
+  const p=document.createElement('div');
+
+  p.className='particle';
+
+  const size=(4+Math.random()*6)+'px';
+
+  p.style.cssText=`
+    width:${size};
+    height:${size};
+    left:${Math.random()*100}%;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    opacity:${0.4+Math.random()*.5};
+    animation-duration:${6+Math.random()*10}s;
+    animation-delay:${Math.random()*8}s;
+  `;
+
+  document.body.appendChild(p);
+}
+
+</script>
+
+</body>
+</html>
